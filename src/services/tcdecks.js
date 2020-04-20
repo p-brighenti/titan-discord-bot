@@ -8,7 +8,9 @@ exports.getTop8 = async () => {
 
     const $ = await cheerio.load(response.body);
 
-    const newEntries = $('b');
+    // TODO: TEST
+    const newEntries = $('b').nextAll('a');
+    // .siblings
 
     for (let i = 0; i < newEntries.length; i++) {
         console.log('parent ', newEntries[i].parent);
