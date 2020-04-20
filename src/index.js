@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 const tcDecksService = require('./services/tcdecks');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const client = new Discord.Client();
 
@@ -19,7 +22,4 @@ client.on('ready', async () => {
     await tcDecksService.getTop8();
 });
 
-const bot_secret_token =
-    'NzAxODg0MjQ2MzcyOTA5MTc3.Xp3_kg.RNY5Mctf-kcNonRQ9oEfQ8T_aFI';
-
-client.login(bot_secret_token);
+client.login(process.env.BOT_TOKEN);
