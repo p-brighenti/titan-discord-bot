@@ -11,13 +11,18 @@ const prefix = process.env.BOT_PREFIX;
 
 client.on('ready', async () => {
     console.log('Connected');
-    goldFishService.getWeekLists();
 });
 
 client.on('message', async (message) => {
     if (message.content === `${prefix}tcdecks`) {
         message.channel.send(
-            embedder.build(await tcDecksService.getRecentPostings())
+            embedder.build(await tcDecksService.getMostRecentLists())
+        );
+    }
+
+    if (message.content === `${prefix}goldfish`) {
+        message.channel.send(
+            embedder.build(await goldFishService.getWeekLists())
         );
     }
 });

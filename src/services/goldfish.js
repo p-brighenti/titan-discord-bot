@@ -1,20 +1,42 @@
 const pageLoader = require('../utils/page-loader');
+const { weeksPriorTo } = require('../utils/date-calculator');
 const { config } = require('../config/goldfish');
 
 exports.getWeekLists = async () => {
-    // const $ = await pageLoader.load();
+    const $ = await pageLoader.load(buildLink());
 
-    const titles = [];
-    const links = [];
+    const entries = [];
 
-    // $();
-    console.log(buildLink());
+    $('td > a').each((i, link) => {
+        entries.push({
+            title: link.children[0].data,
+            link: `https://www.mtggoldfish.com/${link.attribs.href}`,
+        });
+    });
+
+    const currentYear = new Date().getFullYear();
+    const regexp = new RegExp(`^(${currentYear}|${currentYear - 1})`);
+    const orderedDates = $('tr')
+        .text()
+        .split('\n')
+        .filter((str) => regexp.test(str));
+
+    const results = entries.map((elem, i) => {
+        return {
+            ...elem,
+            date: orderedDates[i],
+        };
+    });
+
+    return {
+        config,
+        data: results,
+    };
 };
 
 const buildLink = () => {
-    const dayInMilliseconds = 86400000;
     const today = new Date();
-    const weekAgo = new Date(today - dayInMilliseconds * 7);
+    const weekAgo = weeksPriorTo(today.getTime());
 
     return (
         'https://www.mtggoldfish.com/tournament_searches/create?utf8=%E2%9C%93&' +
