@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const client = new Discord.Client();
+const prefix = process.env.BOT_PREFIX;
 
 client.on('ready', async () => {
     console.log('Connected as ' + client.user.tag);
@@ -19,7 +20,13 @@ client.on('ready', async () => {
 
         testChannel.send('Bot message test');*/
     });
-    await tcDecksService.getTop8();
+    const tcDecksTops = await tcDecksService.getTourneyLinks();
+});
+
+client.on('message', async (message) => {
+    if (message.content === `${prefix}tcdecks`) {
+        message.channel.send('test');
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
