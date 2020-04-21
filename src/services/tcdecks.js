@@ -1,11 +1,10 @@
-const got = require('got');
-const cheerio = require('cheerio');
+const pageLoader = require('../utils/page-loader');
 const { config } = require('../config/tcdecks');
 
 exports.getRecentPostings = async () => {
-    const response = await got('https://www.tcdecks.net/rss.php?format=Legacy');
-
-    const $ = await cheerio.load(response.body);
+    const $ = await pageLoader.load(
+        'https://www.tcdecks.net/rss.php?format=Legacy'
+    );
 
     const titles = [];
     const links = [];
@@ -28,11 +27,9 @@ exports.getRecentPostings = async () => {
 };
 
 const markNewPosts = async (map) => {
-    const response = await got(
+    const $ = await pageLoader.load(
         'https://www.tcdecks.net/format.php?format=Legacy'
     );
-
-    const $ = await cheerio.load(response.body);
 
     const newEntries = [];
 
@@ -49,8 +46,6 @@ const markNewPosts = async (map) => {
             : { ...elem, title: `${elem.title} (NEW)` }
     );
 };
-
-// exports.getNewPostings = async () => {};
 
 function buildRegex(linksToMatch) {
     const stringExp = linksToMatch

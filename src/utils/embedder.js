@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 exports.build = ({ map, config }) => {
     return new Discord.MessageEmbed()
-        .setColor('#0099ff')
+        .setColor('#0377fc')
         .setTitle(config.title)
         .setURL(config.url)
         .setAuthor(config.author)
