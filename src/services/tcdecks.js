@@ -1,7 +1,7 @@
 const pageLoader = require('../utils/page-loader');
 const { config } = require('../config/tcdecks');
 
-exports.getRecentPostings = async () => {
+exports.getMostRecentLists = async () => {
     const $ = await pageLoader.load(
         'https://www.tcdecks.net/rss.php?format=Legacy'
     );
@@ -22,7 +22,7 @@ exports.getRecentPostings = async () => {
 
     return {
         config,
-        map: await markNewPosts(buildResultsMap(titles, links)),
+        data: await markNewPosts(buildResultsMap(titles, links)),
     };
 };
 
@@ -52,7 +52,6 @@ function buildRegex(linksToMatch) {
         .join('|')
         .replace(/\./g, '\\.')
         .replace(/\?/g, '\\?');
-    console.log(stringExp);
     return new RegExp(stringExp);
 }
 

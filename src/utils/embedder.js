@@ -1,6 +1,12 @@
 const Discord = require('discord.js');
+const { AUTHORS } = require('../enums/authors');
 
-exports.build = ({ map, config }) => {
+const embedders = {
+    [AUTHORS.TC_DECKS]: tcDecksEmbed,
+    [AUTHORS.GOLD_FISH]: goldFishEmbed,
+};
+
+exports.build = ({ data, config }) => {
     return new Discord.MessageEmbed()
         .setColor('#0377fc')
         .setTitle(config.title)
@@ -8,15 +14,25 @@ exports.build = ({ map, config }) => {
         .setAuthor(config.author)
         .setDescription(config.description)
         .setThumbnail(config.thumbnail)
-        .addFields(...transform(map))
+        .addFields(...embedders[config.author](data))
         .setTimestamp();
 };
 
-function transform(map) {
-    return map.reduce((acc, entry) => {
+function tcDecksEmbed(data) {
+    return data.reduce((acc, entry) => {
         acc.push({
             name: entry.title,
             value: `[link](${entry.link})`,
+        });
+        return acc;
+    }, []);
+}
+
+function goldFishEmbed(data) {
+    return data.reduce((acc, entry) => {
+        acc.push({
+            name: entry.date,
+            value: `[${entry.title}](${entry.link})`,
         });
         return acc;
     }, []);
