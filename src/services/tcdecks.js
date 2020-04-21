@@ -1,7 +1,8 @@
 const got = require('got');
 const cheerio = require('cheerio');
+const { config } = require('../config/tcdecks');
 
-exports.getTourneyLinks = async () => {
+exports.getRecentPostings = async () => {
     const response = await got('https://www.tcdecks.net/rss.php?format=Legacy');
 
     const $ = await cheerio.load(response.body);
@@ -20,7 +21,10 @@ exports.getTourneyLinks = async () => {
         links[i] = link.next.data.slice(0, data.length - 1);
     });
 
-    return buildResultsMap(titles, links);
+    return {
+        config,
+        map: buildResultsMap(titles, links),
+    };
 };
 
 function buildResultsMap(titles, links) {
