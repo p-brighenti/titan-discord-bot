@@ -23,9 +23,43 @@ exports.getRecentPostings = async () => {
 
     return {
         config,
-        map: buildResultsMap(titles, links),
+        map: await markNewPosts(buildResultsMap(titles, links)),
     };
 };
+
+const markNewPosts = async (map) => {
+    const response = await got(
+        'https://www.tcdecks.net/format.php?format=Legacy'
+    );
+
+    const $ = await cheerio.load(response.body);
+
+    const newEntries = [];
+
+    $('b')
+        .parent()
+        .children('a')
+        .each((i, elem) => newEntries.push(elem.attribs.href));
+
+    const regexp = buildRegex(newEntries);
+
+    return map.map((elem) =>
+        !regexp.test(elem.link)
+            ? elem
+            : { ...elem, title: `${elem.title} (NEW)` }
+    );
+};
+
+// exports.getNewPostings = async () => {};
+
+function buildRegex(linksToMatch) {
+    const stringExp = linksToMatch
+        .join('|')
+        .replace(/\./g, '\\.')
+        .replace(/\?/g, '\\?');
+    console.log(stringExp);
+    return new RegExp(stringExp);
+}
 
 function buildResultsMap(titles, links) {
     // prune labels
