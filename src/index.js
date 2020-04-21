@@ -9,7 +9,7 @@ const client = new Discord.Client();
 const prefix = process.env.BOT_PREFIX;
 
 client.on('ready', async () => {
-    console.log('Connected as ' + client.user.tag);
+    console.log(await tcDecksService.getRecentPostings());
 });
 
 client.on('message', async (message) => {
