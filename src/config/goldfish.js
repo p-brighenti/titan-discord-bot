@@ -1,7 +1,7 @@
-const { AUTHORS } = require('../enums/authors');
+const AUTHORS = require('../enums/authors');
 const { weeksPriorTo } = require('../utils/date-calculator');
 
-exports.config = (() => {
+exports = (() => {
     const today = new Date();
     const start = weeksPriorTo(today.getTime());
 
@@ -9,9 +9,9 @@ exports.config = (() => {
     const startDate = `${start.getDate()}/${start.getMonth()}/${start.getFullYear()}`;
 
     return {
-        title: `${AUTHORS.GOLD_FISH} ${currentDate}`,
+        title: `${AUTHORS.GOLDFISH} ${currentDate}`,
         url: 'https://www.mtggoldfish.com/',
-        author: AUTHORS.GOLD_FISH,
+        author: AUTHORS.GOLDFISH,
         description: `Lists from ${startDate} to ${currentDate}`,
         thumbnail:
             'https://images1.mtggoldfish.com/uploads/ckeditor/pictures/674/content_mtggoldfish_logo.jpg',

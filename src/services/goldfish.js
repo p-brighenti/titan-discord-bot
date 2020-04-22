@@ -1,6 +1,6 @@
 const pageLoader = require('../utils/page-loader');
 const { weeksPriorTo } = require('../utils/date-calculator');
-const { config } = require('../config/goldfish');
+const config = require('../config/goldfish');
 
 exports.getWeekLists = async () => {
     const $ = await pageLoader.load(buildLink());
