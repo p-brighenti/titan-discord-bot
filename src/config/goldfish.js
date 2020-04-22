@@ -1,7 +1,7 @@
 const AUTHORS = require('../enums/authors');
 const { weeksPriorTo } = require('../utils/date-calculator');
 
-exports = (() => {
+module.exports = (() => {
     const today = new Date();
     const start = weeksPriorTo(today.getTime());
 

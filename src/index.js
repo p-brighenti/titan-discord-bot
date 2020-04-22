@@ -5,12 +5,15 @@ const Discord = require('discord.js');
 const tcDecksService = require('./services/tcdecks');
 const goldFishService = require('./services/goldfish');
 const embedder = require('./utils/embedder');
+const routines = require('./routines/routines');
 const COMMANDS = require('./enums/commands');
 
 const client = new Discord.Client();
 
 client.on('ready', async () => {
     console.log(`Connected at ${new Date()}`);
+
+    routines.setupDailyUpdates(client, 14);
 });
 
 client.on('message', async (message) => {

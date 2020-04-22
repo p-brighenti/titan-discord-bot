@@ -7,4 +7,4 @@ const COMMANDS = {
 
 Object.freeze(COMMANDS);
 
-exports = COMMANDS;
+module.exports = COMMANDS;
