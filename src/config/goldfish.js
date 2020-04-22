@@ -1,12 +1,13 @@
 const AUTHORS = require('../enums/authors');
-const { weeksPriorTo } = require('../utils/date-calculator');
+const DATE_FORMATS = require('../enums/date-formats');
+const { weeksPriorTo, formatDate } = require('../utils/date-utils');
 
 module.exports = (() => {
     const today = new Date();
     const start = weeksPriorTo(today.getTime());
 
-    const currentDate = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`;
-    const startDate = `${start.getDate()}/${start.getMonth()}/${start.getFullYear()}`;
+    const currentDate = formatDate(today, DATE_FORMATS.DAY_MONTH_YEAR);
+    const startDate = formatDate(start, DATE_FORMATS.DAY_MONTH_YEAR);
 
     return {
         title: `${AUTHORS.GOLDFISH} ${currentDate}`,

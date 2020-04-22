@@ -1,5 +1,5 @@
 const pageLoader = require('../utils/page-loader');
-const { weeksPriorTo } = require('../utils/date-calculator');
+const { weeksPriorTo } = require('../utils/date-utils');
 const config = require('../config/goldfish');
 
 exports.getWeekLists = async () => {
