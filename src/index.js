@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 const tcDecksService = require('./services/tcdecks');
 const goldFishService = require('./services/goldfish');
 const embedder = require('./utils/embedder');
-const { COMMANDS } = require('./enums/commands');
+const COMMANDS = require('./enums/commands');
 
 const client = new Discord.Client();
 
