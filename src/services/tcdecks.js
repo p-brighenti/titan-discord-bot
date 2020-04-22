@@ -1,5 +1,5 @@
 const pageLoader = require('../utils/page-loader');
-const { config } = require('../config/tcdecks');
+const config = require('../config/tcdecks');
 
 exports.getMostRecentLists = async () => {
     const $ = await pageLoader.load(

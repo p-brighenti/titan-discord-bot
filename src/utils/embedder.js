@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
-const { AUTHORS } = require('../enums/authors');
+const AUTHORS = require('../enums/authors');
 
 const embedders = {
     [AUTHORS.TC_DECKS]: tcDecksEmbed,
-    [AUTHORS.GOLD_FISH]: goldFishEmbed,
+    [AUTHORS.GOLDFISH]: goldFishEmbed,
 };
 
 exports.build = ({ data, config }) => {
