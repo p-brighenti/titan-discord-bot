@@ -1,6 +1,6 @@
 const AUTHORS = require('../enums/authors');
 
-exports = (() => {
+module.exports = (() => {
     const date = new Date();
     const formattedDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
     return {

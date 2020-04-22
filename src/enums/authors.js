@@ -5,4 +5,4 @@ const authors = {
 
 Object.freeze(authors);
 
-exports = authors;
+module.exports = authors;
