@@ -7,7 +7,7 @@ const CHANNELS = require('../enums/channels');
 exports.setupDailyUpdates = (client, hour) => {
     const channel = client.channels.cache.get(CHANNELS.NEW_LISTS);
 
-    const task = cron.schedule(`* ${hour - 1} * * *`, async () => {
+    const task = cron.schedule(`0 ${hour - 1} * * *`, async () => {
         await channel.send(
             embedder.build(await tcDecksService.getMostRecentLists())
         );
