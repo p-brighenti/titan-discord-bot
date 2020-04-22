@@ -19,21 +19,19 @@ exports.build = ({ data, config }) => {
 };
 
 function tcDecksEmbed(data) {
-    return data.reduce((acc, entry) => {
-        acc.push({
+    return data.map((entry) => {
+        return {
             name: entry.title,
             value: `[link](${entry.link})`,
-        });
-        return acc;
-    }, []);
+        };
+    });
 }
 
 function goldFishEmbed(data) {
-    return data.reduce((acc, entry) => {
-        acc.push({
+    return data.map((entry) => {
+        return {
             name: entry.date,
             value: `[${entry.title}](${entry.link})`,
-        });
-        return acc;
-    }, []);
+        };
+    });
 }
