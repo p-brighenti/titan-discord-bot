@@ -4,19 +4,35 @@ const AUTHORS = require('../enums/authors');
 const JSONL = require('../utils/jsonl-converter');
 
 exports.read = async (author) => {
-    if (!Object.values(AUTHORS).find((val) => val === author)) {
+    if (!isValidAuthor(author)) {
         console.error(`abort read: invalid author ${author}`);
         return;
     }
 
-    const data = await fs.readFile(
-        `${config.basePath}/${convertAuthorName(author)}.jsonl`,
-        config.encoding
-    );
+    const data = await fs.readFile(getPath(author), config.encoding);
 
     return JSONL.parse(data);
 };
 
-function convertAuthorName(author) {
-    return author.toLowerCase().replace(/\s/g, '_');
+exports.append = async (author, data) => {
+    if (!isValidAuthor(author)) {
+        console.error(`abort read: invalid author ${author}`);
+        return;
+    }
+
+    await fs.appendFile(
+        getPath(author),
+        JSONL.stringify(data),
+        config.encoding
+    );
+};
+
+function getPath(author) {
+    return `${config.basePath}/${author
+        .toLowerCase()
+        .replace(/\s/g, '_')}.jsonl`;
+}
+
+function isValidAuthor(author) {
+    return Object.values(AUTHORS).find((val) => val === author);
 }

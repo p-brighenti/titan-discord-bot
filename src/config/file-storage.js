@@ -1,7 +1,7 @@
 const path = require('path');
 
 const config = {
-    basePath: path.normalize(`${__dirname}/../../store`),
+    basePath: path.normalize(`${__dirname}/../../.store`),
     encoding: 'utf-8',
 };
 
