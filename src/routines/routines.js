@@ -1,6 +1,6 @@
 const cron = require('node-cron');
-const tcDecksService = require('../services/tcdecks');
-const goldfishService = require('../services/goldfish');
+const tcDecksService = require('../services/tc-decks');
+const goldfishService = require('../services/mtg-goldfish');
 const embedder = require('../utils/embedder');
 const CHANNELS = require('../enums/channels');
 

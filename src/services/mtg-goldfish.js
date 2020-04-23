@@ -1,6 +1,5 @@
 const pageLoader = require('../utils/page-loader');
 const { weeksPriorTo } = require('../utils/date-utils');
-const config = require('../config/goldfish');
 
 exports.getWeekLists = async () => {
     const $ = await pageLoader.load(buildLink());
@@ -29,7 +28,7 @@ exports.getWeekLists = async () => {
     });
 
     return {
-        config,
+        config: require('../config/mtg-goldfish'),
         data: results,
     };
 };

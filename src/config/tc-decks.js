@@ -1,8 +1,10 @@
 const AUTHORS = require('../enums/authors');
+const DATE_FORMATS = require('../enums/date-formats');
+const { formatDate } = require('../utils/date-utils');
 
 module.exports = (() => {
     const date = new Date();
-    const formattedDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+    const formattedDate = formatDate(date, DATE_FORMATS.DAY_MONTH_YEAR);
     return {
         title: `${AUTHORS.TC_DECKS} ${formattedDate}`,
         url: 'https://www.tcdecks.net/format.php?format=Legacy',

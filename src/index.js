@@ -4,8 +4,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const Discord = require('discord.js');
-const tcDecksService = require('./services/tcdecks');
-const goldFishService = require('./services/goldfish');
+const tcDecksService = require('./services/tc-decks');
+const goldFishService = require('./services/mtg-goldfish');
 const embedder = require('./utils/embedder');
 const routines = require('./routines/routines');
 const COMMANDS = require('./enums/commands');
