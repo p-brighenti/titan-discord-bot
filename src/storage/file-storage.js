@@ -27,6 +27,12 @@ exports.append = async (author, data) => {
     );
 };
 
+exports.filterNew = async (author, results) => {
+    const oldLists = await exports.read(author);
+    const oldLinks = oldLists.map((list) => list.link);
+    return results.filter((result) => !oldLinks.includes(result.link));
+};
+
 function getPath(author) {
     return `${config.basePath}/${author
         .toLowerCase()
