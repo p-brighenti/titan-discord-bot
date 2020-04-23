@@ -1,7 +1,9 @@
 const pageLoader = require('../utils/page-loader');
 const { weeksPriorTo } = require('../utils/date-utils');
+const storage = require('../storage/file-storage');
+const AUTHORS = require('../enums/authors');
 
-exports.getWeekLists = async () => {
+exports.getNewLists = async () => {
     const $ = await pageLoader.load(buildLink());
 
     const entries = [];
@@ -9,7 +11,7 @@ exports.getWeekLists = async () => {
     $('td > a').each((i, link) => {
         entries.push({
             title: link.children[0].data,
-            link: `https://www.mtggoldfish.com/${link.attribs.href}`,
+            link: `https://www.mtggoldfish.com${link.attribs.href}`,
         });
     });
 
@@ -27,9 +29,13 @@ exports.getWeekLists = async () => {
         };
     });
 
+    const newLists = await storage.filterNew(AUTHORS.GOLDFISH, results);
+
+    await updateStore(newLists);
+
     return {
         config: require('../config/mtg-goldfish'),
-        data: results,
+        data: newLists,
     };
 };
 
@@ -55,3 +61,15 @@ const buildLink = () => {
         '&commit=Search'
     );
 };
+
+async function updateStore(newLists) {
+    if (!newLists.length) return;
+
+    const date = new Date();
+    const records = newLists.map((entry) => {
+        return { link: entry.link, date };
+    });
+
+    await storage.append(AUTHORS.GOLDFISH, records);
+    console.log(`${date} ${AUTHORS.GOLDFISH} ${records.length}`);
+}

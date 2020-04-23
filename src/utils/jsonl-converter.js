@@ -12,7 +12,6 @@ exports.stringify = (data) => {
     }
 
     if (validShape) {
-        console.log(data);
         data = JSON.stringify(data);
     }
 
