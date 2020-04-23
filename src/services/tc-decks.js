@@ -1,5 +1,4 @@
 const pageLoader = require('../utils/page-loader');
-const config = require('../config/tcdecks');
 
 exports.getMostRecentLists = async () => {
     const $ = await pageLoader.load(
@@ -21,7 +20,7 @@ exports.getMostRecentLists = async () => {
     });
 
     return {
-        config,
+        config: require('../config/tc-decks'),
         data: await markNewPosts(buildResultsMap(titles, links)),
     };
 };

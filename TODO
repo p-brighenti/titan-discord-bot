@@ -1,1 +1,3 @@
-rename tcdecks to tc-decks and goldfish to mtg-goldfish
+consider doing stringify/parse methods
+
+goldfish 3x write to log with timestamp when new

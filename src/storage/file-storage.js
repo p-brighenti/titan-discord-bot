@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const config = require('../config/file-storage');
 const AUTHORS = require('../enums/authors');
-const jsonlConverter = require('../utils/jsonl-converter');
+const JSONL = require('../utils/jsonl-converter');
 
 exports.read = async (author) => {
     if (!Object.values(AUTHORS).find((val) => val === author)) {
@@ -14,7 +14,7 @@ exports.read = async (author) => {
         config.encoding
     );
 
-    return jsonlConverter.toJSON(data);
+    return JSONL.parse(data);
 };
 
 function convertAuthorName(author) {
