@@ -31,6 +31,8 @@ exports.getNewLists = async () => {
 
     const newLists = await storage.filterNew(AUTHORS.GOLDFISH, results);
 
+    console.log(`${newLists.length} new goldfish results @ ${new Date()}`);
+
     await updateStore(newLists);
 
     return {
