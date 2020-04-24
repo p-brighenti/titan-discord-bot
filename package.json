@@ -12,10 +12,12 @@
         "cheerio": "^1.0.0-rc.3",
         "discord.js": "^12.2.0",
         "dotenv": "^8.2.0",
-        "eslint": "^6.8.0",
         "forever": "^2.0.0",
         "got": "^11.0.1",
-        "node-cron": "^2.0.3",
-        "prettier": "^2.0.4"
+        "node-cron": "^2.0.3"
+    },
+    "devDependencies": {
+        "eslint": "^6.8.0",
+        "prettier": "^2.0.5"
     }
 }
