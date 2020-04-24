@@ -9,7 +9,7 @@ module.exports = (() => {
         title: `${AUTHORS.TC_DECKS} ${formattedDate}`,
         url: 'https://www.tcdecks.net/format.php?format=Legacy',
         author: AUTHORS.TC_DECKS,
-        description: `New entries for ${formattedDate}`,
+        description: `New lists for ${formattedDate}`,
         thumbnail: 'https://www.tcdecks.net/img/main_Legacy.jpg',
         cronSchedule: '0 13 * * *',
     };
