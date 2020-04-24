@@ -16,6 +16,6 @@ module.exports = (() => {
         description: `Lists from ${startDate} to ${currentDate}`,
         thumbnail:
             'https://images1.mtggoldfish.com/uploads/ckeditor/pictures/674/content_mtggoldfish_logo.jpg',
-        cronSchedule: '0 8,14,19,23 * * *',
+        cronSchedule: '0 7,13,18,23 * * *',
     };
 })();
