@@ -11,6 +11,6 @@ module.exports = (() => {
         author: AUTHORS.TC_DECKS,
         description: `New entries for ${formattedDate}`,
         thumbnail: 'https://www.tcdecks.net/img/main_Legacy.jpg',
-        cronSchedule: '0 13 * * *',
+        cronSchedule: '0 14 * * *',
     };
 })();
