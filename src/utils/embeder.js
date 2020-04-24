@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const AUTHORS = require('../enums/authors');
 
-const embedders = {
+const embeders = {
     [AUTHORS.TC_DECKS]: tcDecksEmbed,
     [AUTHORS.GOLDFISH]: goldFishEmbed,
 };
@@ -14,7 +14,7 @@ exports.build = ({ data, config }) => {
         .setAuthor(config.author)
         .setDescription(config.description)
         .setThumbnail(config.thumbnail)
-        .addFields(...embedders[config.author](data))
+        .addFields(...embeders[config.author](data))
         .setTimestamp();
 };
 
