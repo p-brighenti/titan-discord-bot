@@ -4,7 +4,7 @@
     "watch": true,
     "script": "src/index.js",
     "sourceDir": "/home/ec2-user/titan-discord-bot",
-    "logFile": "/home/ec2-user/logs/forever.log",
-    "outFile": "/home/ec2-user/logs/out.log",
-    "errFile": "/home/ec2-user/logs/error.log"
+    "logFile": "/home/ec2-user/titan-discord-bot/logs/forever.log",
+    "outFile": "/home/ec2-user/titan-discord-bot/logs/out.log",
+    "errFile": "/home/ec2-user/titan-discord-bot/logs/error.log"
 }
