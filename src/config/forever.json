@@ -1,7 +1,6 @@
 {
     "uid": "titan-bot",
     "append": true,
-    "watch": true,
     "script": "src/index.js",
     "sourceDir": "/home/ec2-user/titan-discord-bot",
     "logFile": "/home/ec2-user/titan-discord-bot/logs/forever.log",
