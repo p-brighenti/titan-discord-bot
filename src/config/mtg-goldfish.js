@@ -4,7 +4,7 @@ const { weeksPriorTo, formatDate } = require('../utils/date-utils');
 
 module.exports = (() => {
     const today = new Date();
-    const start = weeksPriorTo(today.getTime());
+    const start = weeksPriorTo(today, 1);
 
     const currentDate = formatDate(today, DATE_FORMATS.DAY_MONTH_YEAR);
     const startDate = formatDate(start, DATE_FORMATS.DAY_MONTH_YEAR);

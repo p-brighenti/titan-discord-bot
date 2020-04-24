@@ -1,2 +1,2 @@
-prune method
-schedule prune method
+error handling with try/catch
+check for named export candidates with alias (const { old_name:new_name ,foo: f, bar: b })

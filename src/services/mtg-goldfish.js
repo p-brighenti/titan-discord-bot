@@ -41,7 +41,7 @@ exports.getNewLists = async () => {
 
 const buildLink = () => {
     const today = new Date();
-    const weekAgo = weeksPriorTo(today.getTime());
+    const weekAgo = weeksPriorTo(today, 1);
 
     return (
         'https://www.mtggoldfish.com/tournament_searches/create?utf8=%E2%9C%93&' +
