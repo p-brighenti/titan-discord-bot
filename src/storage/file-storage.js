@@ -14,7 +14,7 @@ exports.read = async (author) => {
         emitter.emit(EVENTS.THRESHOLD_REACHED, { author, data });
     }
 
-    return JSONL.parse(data);
+    return data;
 };
 
 exports.append = async (author, data) => {
