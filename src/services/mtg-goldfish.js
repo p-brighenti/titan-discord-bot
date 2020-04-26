@@ -6,6 +6,8 @@ const AUTHORS = require('../enums/authors');
 exports.getNewLists = async () => {
     const $ = await pageLoader.load(buildLink());
 
+    console.log('generated Link \n\n', buildLink());
+
     const entries = [];
 
     $('td > a').each((i, link) => {
@@ -49,13 +51,13 @@ const buildLink = () => {
         'https://www.mtggoldfish.com/tournament_searches/create?utf8=%E2%9C%93&' +
         'tournament_search%5Bname%5D=&tournament_search%5Bformat%5D=legacy&tournament_search%' +
         '5Bdate_range%5D=' +
-        weekAgo.getMonth() +
+        (weekAgo.getMonth() + 1) +
         '%2F' +
         weekAgo.getDate() +
         '%2F' +
         weekAgo.getFullYear() +
         '+-+' +
-        today.getMonth() +
+        (today.getMonth() + 1) +
         '%2F' +
         today.getDate() +
         '%2F' +
