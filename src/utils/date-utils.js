@@ -6,7 +6,7 @@ exports.weeksPriorTo = (date, weeks = 1) =>
 
 exports.formatDate = (date, format) => {
     const day = date.getDate();
-    const month = date.getMonth();
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
     return format.replace('d', day).replace('m', month).replace('y', year);
